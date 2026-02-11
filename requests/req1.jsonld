@@ -1,0 +1,10 @@
+{
+  "@context": "http://www.w3.org/ns/odrl.jsonld",
+  "@type": "Request",
+  "uid": "http://example.com/request/ph1-analysis-req",
+  "permission": [{
+    "target": "http://example.com/ph1/activities",
+    "assignee": "http://example.com/analyst",
+    "action": "use"
+  }]
+}

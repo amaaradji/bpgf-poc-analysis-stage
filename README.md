@@ -17,8 +17,25 @@ applies a prompt template, and produces a policy file with an evaluator output r
 - `scripts/` - Automation scripts
 - `results/` - Output reports and evaluation results
 
-## Next Steps
+## PoC Demo
 
-1. Populate `data/ph1.txt` with a sample PH entry
-2. Write the analysis prompt template in `prompts/analysis_stage.md`
-3. Implement `scripts/run.sh` to execute the analysis pipeline
+This PoC implements the **Process analysis** lifecycle stage from the BPGF paper.
+
+**Key files:**
+- `data/ph1.txt` - Sample PH entry (Order Fulfillment process)
+- `prompts/analysis_stage.md` - Prompt template for value-added classification
+- `policies/ph1_analysis_policy.jsonld` - Generated ODRL policy
+- `requests/req1.jsonld` - ODRL request for evaluation
+- `world/world1.ttl` - World state facts
+
+**Run the evaluator:**
+```bash
+./scripts/run.sh
+```
+
+**Expected output:** `results/ph1_report.json` containing the ODRL Evaluator report.
+
+## Requirements
+
+- Node.js 18+
+- npm

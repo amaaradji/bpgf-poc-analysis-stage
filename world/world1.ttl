@@ -1,0 +1,12 @@
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix odrl: <http://www.w3.org/ns/odrl/2/> .
+@prefix ex: <http://example.com/> .
+
+# Current time for evaluation
+ex:currentTime odrl:dateTime "2026-02-11T00:00:00Z"^^xsd:dateTime .
+
+# The activities asset exists
+ex:ph1/activities a odrl:Asset .
+
+# The analyst party exists
+ex:analyst a odrl:Party .
