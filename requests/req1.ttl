@@ -1,0 +1,10 @@
+@prefix odrl: <http://www.w3.org/ns/odrl/2/> .
+@prefix ex: <http://example.com/> .
+
+<http://example.com/request/ph1-analysis-req> a odrl:Request ;
+    odrl:uid <http://example.com/request/ph1-analysis-req> ;
+    odrl:permission [
+        odrl:target <http://example.com/ph1-activities> ;
+        odrl:assignee <http://example.com/analyst> ;
+        odrl:action odrl:use
+    ] .

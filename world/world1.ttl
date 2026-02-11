@@ -3,10 +3,10 @@
 @prefix ex: <http://example.com/> .
 
 # Current time for evaluation
-ex:currentTime odrl:dateTime "2026-02-11T00:00:00Z"^^xsd:dateTime .
+<http://example.com/currentTime> odrl:dateTime "2026-02-11T00:00:00Z"^^xsd:dateTime .
 
 # The activities asset exists
-ex:ph1/activities a odrl:Asset .
+<http://example.com/ph1-activities> a odrl:Asset .
 
 # The analyst party exists
-ex:analyst a odrl:Party .
+<http://example.com/analyst> a odrl:Party .

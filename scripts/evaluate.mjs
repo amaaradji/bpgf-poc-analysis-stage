@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // Minimal ODRL Evaluator wrapper for PoC
-import { ODRLEvaluator } from 'odrl-evaluator';
+import { ODRLEvaluator, ODRLEngineMultipleSteps } from 'odrl-evaluator';
 import { readFileSync, writeFileSync } from 'fs';
 import { Parser } from 'n3';
 
@@ -11,20 +11,38 @@ async function parseFile(filepath) {
 }
 
 async function main() {
-  const evaluator = new ODRLEvaluator();
+  const engine = new ODRLEngineMultipleSteps();
+  const evaluator = new ODRLEvaluator(engine);
 
-  const policy = await parseFile('./policies/ph1_analysis_policy.jsonld');
-  const request = await parseFile('./requests/req1.jsonld');
+  const policy = await parseFile('./policies/ph1_analysis_policy.ttl');
+  const request = await parseFile('./requests/req1.ttl');
   const world = await parseFile('./world/world1.ttl');
 
   const report = await evaluator.evaluate(policy, request, world);
 
+  // Also get intermediate constraint satisfaction results
+  let constraintReport = [];
+  try {
+    constraintReport = await engine.constraintSatisfaction || [];
+  } catch (e) { /* ignore */ }
+
+  // The evaluator returns quads; serialize for inspection
+  const resultQuads = Array.isArray(report) ? report.map(q => ({
+    subject: q.subject?.value,
+    predicate: q.predicate?.value,
+    object: q.object?.value
+  })) : report;
+
   const output = {
     timestamp: new Date().toISOString(),
-    policy: 'policies/ph1_analysis_policy.jsonld',
-    request: 'requests/req1.jsonld',
+    policy: 'policies/ph1_analysis_policy.ttl',
+    request: 'requests/req1.ttl',
     world: 'world/world1.ttl',
-    result: report
+    policyTriples: policy.length,
+    requestTriples: request.length,
+    worldTriples: world.length,
+    resultTriples: Array.isArray(report) ? report.length : 'N/A',
+    result: resultQuads
   };
 
   writeFileSync('./results/ph1_report.json', JSON.stringify(output, null, 2));

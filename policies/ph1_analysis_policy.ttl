@@ -1,0 +1,21 @@
+@prefix odrl: <http://www.w3.org/ns/odrl/2/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ex: <http://example.com/> .
+
+<http://example.com/policy/ph1-analysis-01> a odrl:Offer ;
+    odrl:uid <http://example.com/policy/ph1-analysis-01> ;
+    odrl:profile <http://example.com/odrl-profile-analysis> ;
+    odrl:permission [
+        odrl:target <http://example.com/ph1-activities> ;
+        odrl:assigner <http://example.com/analyst> ;
+        odrl:action odrl:use ;
+        odrl:duty [
+            odrl:action <http://example.com/action/report> ;
+            odrl:target <http://example.com/ph1-analysis-report> ;
+            odrl:constraint [
+                odrl:leftOperand odrl:purpose ;
+                odrl:operator odrl:isA ;
+                odrl:rightOperand <http://example.com/value-added-classification>
+            ]
+        ]
+    ] .

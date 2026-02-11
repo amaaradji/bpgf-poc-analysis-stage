@@ -1,0 +1,32 @@
+{
+  "timestamp": "2026-02-11T07:31:14.180Z",
+  "policy": "policies/ph1_analysis_policy.ttl",
+  "request": "requests/req1.ttl",
+  "world": "world/world1.ttl",
+  "policyTriples": 14,
+  "requestTriples": 6,
+  "worldTriples": 3,
+  "resultTriples": 4,
+  "result": [
+    {
+      "subject": "urn:uuid:dcc83f2b-8b52-8c61-b36d-a9848c7f303b",
+      "predicate": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "object": "https://w3id.org/force/compliance-report#ConstraintReport"
+    },
+    {
+      "subject": "urn:uuid:dcc83f2b-8b52-8c61-b36d-a9848c7f303b",
+      "predicate": "https://w3id.org/force/compliance-report#constraint",
+      "object": "b0_e_n3_MINUS_2_1"
+    },
+    {
+      "subject": "urn:uuid:dcc83f2b-8b52-8c61-b36d-a9848c7f303b",
+      "predicate": "https://w3id.org/force/compliance-report#constraintLeftOperand",
+      "object": ""
+    },
+    {
+      "subject": "urn:uuid:dcc83f2b-8b52-8c61-b36d-a9848c7f303b",
+      "predicate": "https://w3id.org/force/compliance-report#satisfactionState",
+      "object": "https://w3id.org/force/compliance-report#Unsatisfied"
+    }
+  ]
+}

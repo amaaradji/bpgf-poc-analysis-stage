@@ -1,0 +1,12 @@
+{
+  "lifecycle_stage": "Process analysis",
+  "policy_valid": true,
+  "decision": "Unsatisfied",
+  "triggered": [
+    {
+      "type": "ConstraintReport",
+      "id": "urn:uuid:dcc83f2b-8b52-8c61-b36d-a9848c7f303b",
+      "satisfactionState": "Unsatisfied"
+    }
+  ]
+}

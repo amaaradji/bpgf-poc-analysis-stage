@@ -24,16 +24,16 @@ This PoC implements the **Process analysis** lifecycle stage from the BPGF paper
 **Key files:**
 - `data/ph1.txt` - Sample PH entry (Order Fulfillment process)
 - `prompts/analysis_stage.md` - Prompt template for value-added classification
-- `policies/ph1_analysis_policy.jsonld` - Generated ODRL policy
-- `requests/req1.jsonld` - ODRL request for evaluation
+- `policies/ph1_analysis_policy.ttl` - Generated ODRL policy (Turtle)
+- `requests/req1.ttl` - ODRL request for evaluation
 - `world/world1.ttl` - World state facts
 
-**Run the evaluator:**
+**Run and inspect:**
 ```bash
-./scripts/run.sh
+./scripts/run.sh              # Runs ODRL Evaluator
+cat results/ph1_report.json   # Raw evaluator output
+cat results/summary.md        # Human-readable summary
 ```
-
-**Expected output:** `results/ph1_report.json` containing the ODRL Evaluator report.
 
 ## Requirements
 
