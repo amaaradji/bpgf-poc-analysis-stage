@@ -1,0 +1,11 @@
+# OS junk
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Logs
+*.log
+logs/
+
+# Keep results/ tracked via .keep
+!results/.keep
