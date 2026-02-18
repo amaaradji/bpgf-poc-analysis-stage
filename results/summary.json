@@ -1,12 +1,23 @@
 {
   "lifecycle_stage": "Process analysis",
   "policy_valid": true,
-  "decision": "Unsatisfied",
+  "decision": "Active",
   "triggered": [
     {
-      "type": "ConstraintReport",
-      "id": "urn:uuid:dcc83f2b-8b52-8c61-b36d-a9848c7f303b",
-      "satisfactionState": "Unsatisfied"
+      "type": "PermissionReport",
+      "activationState": "Active"
+    },
+    {
+      "type": "TargetReport",
+      "satisfactionState": "Satisfied"
+    },
+    {
+      "type": "PartyReport",
+      "satisfactionState": "Satisfied"
+    },
+    {
+      "type": "ActionReport",
+      "satisfactionState": "Satisfied"
     }
   ]
 }

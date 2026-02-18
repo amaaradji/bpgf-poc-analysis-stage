@@ -1,22 +1,31 @@
 #!/usr/bin/env node
 // Minimal ODRL Evaluator wrapper for PoC
-import { ODRLEvaluator, ODRLEngineMultipleSteps } from 'odrl-evaluator';
+import { ODRLEvaluator, ODRLEngineMultipleSteps, ODRLEngine } from 'odrl-evaluator';
 import { readFileSync, writeFileSync } from 'fs';
-import { Parser } from 'n3';
+import { Parser, Store } from 'n3';
 
 async function parseFile(filepath) {
   const content = readFileSync(filepath, 'utf-8');
   const parser = new Parser();
-  return parser.parse(content);
+  const quads = parser.parse(content);
+  const store = new Store(quads);
+  return store.getQuads(null, null, null, null);
 }
 
 async function main() {
-  const engine = new ODRLEngineMultipleSteps();
+  // Use ODRLEngine (default) for simpler scenarios, ODRLEngineMultipleSteps for constraints
+  const useMultiStep = process.argv.includes('--multistep');
+  const engine = useMultiStep ? new ODRLEngineMultipleSteps() : new ODRLEngine();
   const evaluator = new ODRLEvaluator(engine);
 
-  const policy = await parseFile('./policies/ph1_analysis_policy.ttl');
-  const request = await parseFile('./requests/req1.ttl');
-  const world = await parseFile('./world/world1.ttl');
+  // Allow specifying files via command line args
+  const policyFile = process.argv[2] || './policies/ph1_analysis_policy.ttl';
+  const requestFile = process.argv[3] || './requests/req1.ttl';
+  const worldFile = process.argv[4] || './world/world1.ttl';
+
+  const policy = await parseFile(policyFile);
+  const request = await parseFile(requestFile);
+  const world = await parseFile(worldFile);
 
   const report = await evaluator.evaluate(policy, request, world);
 
@@ -35,9 +44,9 @@ async function main() {
 
   const output = {
     timestamp: new Date().toISOString(),
-    policy: 'policies/ph1_analysis_policy.ttl',
-    request: 'requests/req1.ttl',
-    world: 'world/world1.ttl',
+    policy: policyFile,
+    request: requestFile,
+    world: worldFile,
     policyTriples: policy.length,
     requestTriples: request.length,
     worldTriples: world.length,

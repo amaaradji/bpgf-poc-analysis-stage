@@ -1,10 +1,13 @@
 @prefix odrl: <http://www.w3.org/ns/odrl/2/> .
-@prefix ex: <http://example.com/> .
+@prefix ex: <http://example.org/> .
+@prefix dct: <http://purl.org/dc/terms/> .
 
-<http://example.com/request/ph1-analysis-req> a odrl:Request ;
-    odrl:uid <http://example.com/request/ph1-analysis-req> ;
-    odrl:permission [
-        odrl:target <http://example.com/ph1-activities> ;
-        odrl:assignee <http://example.com/analyst> ;
-        odrl:action odrl:use
-    ] .
+# Request: Analyst requests to use activities for analysis
+<urn:uuid:request-ph1-analysis> a odrl:Request ;
+    dct:description "Analyst requests to use process activities for value-added analysis." ;
+    odrl:permission <urn:uuid:req-perm-ph1> .
+
+<urn:uuid:req-perm-ph1> a odrl:Permission ;
+    odrl:assignee ex:analyst ;
+    odrl:action odrl:use ;
+    odrl:target ex:ph1-activities .
