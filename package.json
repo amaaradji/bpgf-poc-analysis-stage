@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "n3": "^2.0.1",
+    "odrl-evaluator": "^0.6.0"
+  }
+}

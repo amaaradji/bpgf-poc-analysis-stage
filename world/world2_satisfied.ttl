@@ -1,0 +1,11 @@
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix odrl: <http://www.w3.org/ns/odrl/2/> .
+
+# Current usage count is 10 (ABOVE limit of 5) - should be Unsatisfied
+<http://example.com/ph1-activities> odrl:count "10"^^xsd:integer .
+
+# The activities asset exists
+<http://example.com/ph1-activities> a odrl:Asset .
+
+# The analyst party exists
+<http://example.com/analyst> a odrl:Party .

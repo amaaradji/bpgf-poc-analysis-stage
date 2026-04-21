@@ -9,3 +9,10 @@ logs/
 
 # Keep results/ tracked via .keep
 !results/.keep
+
+# Dependencies
+node_modules/
+package-lock.json
+
+# Reference documents (local only)
+utils/
