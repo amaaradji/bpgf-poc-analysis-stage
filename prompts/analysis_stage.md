@@ -1,7 +1,7 @@
 # Process Analysis Stage - Prompt Template
 
 ## Input
-A Process History (PH) entry containing: goal, roles, activities, and dependencies.
+A MIT Process Handbook (PH) entry containing: goal, roles, activities, and dependencies.
 
 ## Task
 Generate an ODRL policy for the "Process analysis" lifecycle stage that:

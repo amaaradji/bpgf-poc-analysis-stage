@@ -4,12 +4,12 @@ A minimal proof-of-concept for the BPGF process analysis stage.
 
 ## Goal
 
-Demonstrate a single-stage analysis workflow that reads process history (PH) data,
+Demonstrate a single-stage analysis workflow that reads MIT Process Handbook (PH) data,
 applies a prompt template, and produces a policy file with an evaluator output report.
 
 ## Repository Structure
 
-- `data/` - Input PH entries
+- `data/` - Input MIT Process Handbook (PH) entries
 - `prompts/` - Prompt templates for analysis stages
 - `policies/` - Generated policy files
 - `requests/` - Request artifacts
